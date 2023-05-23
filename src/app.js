@@ -149,4 +149,6 @@ app.use(function(err, req, res, next) {
     res.render('error', { layout: false })
 });
 
-module.exports = app;
+app.listen(3000, function(){
+    console.log(`Express started on http://localhost:${3000} press Ctrl-C to terminate.`)
+})
