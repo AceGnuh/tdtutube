@@ -6,10 +6,11 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
 const flash = require('connect-flash');
+require('dotenv').config();
 
 // Initial connect to database
 const connection = require('./utils/database.js');
-const credentials = require('./utils/credentials.js');
+const credentials = require('./credentials.js');
 const convertBuffer2Boolean = require('./utils/helper/helper.js').convertBuffer2Boolean;
 
 const indexRouter = require('./routes/index');
