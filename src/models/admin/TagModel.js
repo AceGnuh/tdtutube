@@ -11,7 +11,7 @@ class TagModel {
                 
                 }
 
-                console.log(tags)
+                //console.log(tags)
 
                 if(tags){
                     let _tags = tags.map(tag => {

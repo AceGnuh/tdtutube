@@ -4,12 +4,12 @@ const { convertBuffer2Boolean } = require('../../utils/helper/helper.js')
 class VideoModel {
     getVideos() {
         return new Promise(function(resolve, reject) {
-            let sql = ` SELECT VIDEO.*, 
-                        USER.name AS user_name, 
-                        TAG.NAME AS TAGNAME 
-                        FROM VIDEO, USER, TAG 
-                        where USER.id = VIDEO.user_id AND VIDEO.TAG_ID = TAG.ID 
-                        order by Video.id`
+            let sql = ` SELECT video.*, 
+                        user.name AS user_name, 
+                        tag.NAME AS TAGNAME 
+                        FROM video, user, tag 
+                        where user.id = video.user_id AND video.TAG_ID = tag.ID 
+                        order by video.id`
 
             connection.query(sql, function(err, videos) {
                 if (err) {
@@ -29,7 +29,7 @@ class VideoModel {
 
     blockVideoById(id) {
         return new Promise((resolve, reject) => {
-            let sql = 'UPDATE VIDEO SET HIDE = 1 WHERE ID = ?'
+            let sql = 'UPDATE video SET HIDE = 1 WHERE ID = ?'
 
             connection.query(sql, [id], function(err, rows) {
                 if (err) {
@@ -51,7 +51,7 @@ class VideoModel {
 
     unblockVideoById(id) {
         return new Promise((resolve, reject) => {
-            let sql = 'UPDATE VIDEO SET HIDE = 0 WHERE ID = ?'
+            let sql = 'UPDATE video SET HIDE = 0 WHERE ID = ?'
 
             connection.query(sql, [id], function(err, rows) {
                 if (err) {
@@ -69,7 +69,7 @@ class VideoModel {
 
     getUnapprovedVideo() {
         return new Promise(function(resolve, reject) {
-            let sql = 'SELECT VIDEO.*, USER.name AS user_name FROM VIDEO, USER where USER.id = VIDEO.user_id and VIDEO.status <> 0'
+            let sql = 'SELECT video.*, user.name AS user_name FROM video, user where user.id = video.user_id and video.status <> 0'
 
             connection.query(sql, function(err, videos) {
                 if (err) {
@@ -83,11 +83,11 @@ class VideoModel {
 
     getUnapprovedVideoById(id) {
         return new Promise(function(resolve, reject) {
-            let sql = ` SELECT VIDEO.*, 
-                        USER.NAME AS USERNAME, 
+            let sql = ` SELECT video.*, 
+                        user.NAME AS USERNAME, 
                         TAG.NAME AS TAGNAME 
-                        FROM VIDEO, USER, TAG 
-                        WHERE VIDEO.id = ? AND USER.ID = VIDEO.USER_ID AND VIDEO.TAG_ID = TAG.ID`
+                        FROM video, user, tag 
+                        WHERE video.id = ? AND user.ID = video.USER_ID AND video.TAG_ID = tag.ID`
 
             connection.query(sql, [id], function(err, video) {
                 if (err) {
@@ -103,7 +103,7 @@ class VideoModel {
 
     approvedVideoById(id) {
         return new Promise(function(resolve, reject) {
-            let sql = 'UPDATE VIDEO SET STATUS = 0 WHERE ID = ?'
+            let sql = 'UPDATE video SET STATUS = 0 WHERE ID = ?'
 
             connection.query(sql, [id], function(err, rows) {
                 if (err) {
@@ -117,7 +117,7 @@ class VideoModel {
 
     deleteVideoById(id) {
         return new Promise(function(resolve, reject) {
-            let sql = 'DELETE FROM VIDEO WHERE ID = ?'
+            let sql = 'DELETE FROM video WHERE ID = ?'
 
             connection.query(sql, [id], function(err, rows) {
                 if (err) {
@@ -131,7 +131,7 @@ class VideoModel {
 
     setFeatureVideo(id) {
         return new Promise(function(resolve, reject) {
-            let sql = 'UPDATE VIDEO SET FEATURE = 1 WHERE ID = ?'
+            let sql = 'UPDATE video SET FEATURE = 1 WHERE ID = ?'
 
             connection.query(sql, [id], function(err, rows) {
                 if (err) {
@@ -145,7 +145,7 @@ class VideoModel {
 
     setUnfeatureVideo(id) {
         return new Promise(function(resolve, reject) {
-            let sql = 'UPDATE VIDEO SET FEATURE = 0 WHERE ID = ?'
+            let sql = 'UPDATE video SET FEATURE = 0 WHERE ID = ?'
 
             connection.query(sql, [id], function(err, rows) {
                 if (err) {

@@ -7,7 +7,7 @@ class UserModel {
             let sql = ` SELECT user.*,
                         SUM(video.VIEW_COUNT) AS TOTAL_VIEW_COUNT,
                         COUNT(video.ID) AS TOTAL_VIDEO
-                        FROM user LEFT JOIN VIDEO ON user.ID = video.user_ID
+                        FROM user LEFT JOIN video ON user.ID = video.user_ID
                         WHERE user.ROLE_ID <> 1
                         GROUP BY user.ID
                         `
@@ -16,17 +16,17 @@ class UserModel {
                     reject(err)
                 }
 
-                // console.log("Số lượng user " + users.length)
-                console.log(JSON.stringify(users))
-
-                users = users.map(user => ({
-                    ...user,
-                    _hide: convertBuffer2Boolean(user.hide)
-                }))
-
-                console.log(JSON.stringify(users))
-
-                resolve(users)
+                if(users){
+                    users = users.map(user => ({
+                        ...user,
+                        _hide: convertBuffer2Boolean(user.hide)
+                    }))
+    
+                    console.log(JSON.stringify(users))
+    
+                    resolve(users)
+                }
+                
             })
         })
     }
@@ -36,10 +36,10 @@ class UserModel {
 
             let sql = ` SELECT user.*,
                         COUNT(*) AS NUM_VIDEO,
-                        SUM(VIDEO.view_count) AS TOTAL_VIEW,
-                        SUM(VIDEO.like_count) AS TOTAL_LIKE,
-                        SUM(VIDEO.comment_count) AS TOTAL_COMMENT
-                        FROM user INNER JOIN VIDEO ON user.id = VIDEO.user
+                        SUM(video.view_count) AS TOTAL_VIEW,
+                        SUM(video.like_count) AS TOTAL_LIKE,
+                        SUM(video.comment_count) AS TOTAL_COMMENT
+                        FROM user INNER JOIN video ON user.id = video.user
                         WHERE user.ID = ? and WHERE user.ROLE_ID <> 1
                         `
 
