@@ -12,7 +12,7 @@ const playlistContentModel = require('../models/PlaylistContentModel.js');
 class IndexController {
     getIndex(req, res) {
         videoModel.loadVideo(1).then((video) => {
-            console.log(video);
+            //console.log(video);
             res.render('index', {
                 title: 'TDTUTube',
                 videos: video,

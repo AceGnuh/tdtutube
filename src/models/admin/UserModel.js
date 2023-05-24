@@ -5,9 +5,9 @@ class UserModel {
     getUsers() {
         return new Promise(function(resolve, reject) {
             let sql = ` SELECT user.*,
-                        SUM(VIDEO.VIEW_COUNT) AS TOTAL_VIEW_COUNT,
-                        COUNT(VIDEO.ID) AS TOTAL_VIDEO
-                        FROM user LEFT JOIN VIDEO ON user.ID = VIDEO.user_ID
+                        SUM(video.VIEW_COUNT) AS TOTAL_VIEW_COUNT,
+                        COUNT(video.ID) AS TOTAL_VIDEO
+                        FROM user LEFT JOIN VIDEO ON user.ID = video.user_ID
                         WHERE user.ROLE_ID <> 1
                         GROUP BY user.ID
                         `
@@ -17,7 +17,7 @@ class UserModel {
                 }
 
                 // console.log("Số lượng user " + users.length)
-                // console.log(JSON.stringify(users))
+                console.log(JSON.stringify(users))
 
                 users = users.map(user => ({
                     ...user,
