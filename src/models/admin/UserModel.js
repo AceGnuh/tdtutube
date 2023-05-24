@@ -4,12 +4,12 @@ const { convertBuffer2Boolean } = require('../../utils/helper/helper.js')
 class UserModel {
     getUsers() {
         return new Promise(function(resolve, reject) {
-            let sql = ` SELECT USER.*,
+            let sql = ` SELECT user.*,
                         SUM(VIDEO.VIEW_COUNT) AS TOTAL_VIEW_COUNT,
                         COUNT(VIDEO.ID) AS TOTAL_VIDEO
-                        FROM USER LEFT JOIN VIDEO ON USER.ID = VIDEO.USER_ID
-                        WHERE USER.ROLE_ID <> 1
-                        GROUP BY USER.ID
+                        FROM user LEFT JOIN VIDEO ON user.ID = VIDEO.user_ID
+                        WHERE user.ROLE_ID <> 1
+                        GROUP BY user.ID
                         `
             connection.query(sql, (err, users) => {
                 if (err) {
@@ -34,13 +34,13 @@ class UserModel {
     getUsersById(id) {
         return new Promise(function(resolve, reject) {
 
-            let sql = ` SELECT USER.*,
+            let sql = ` SELECT user.*,
                         COUNT(*) AS NUM_VIDEO,
                         SUM(VIDEO.view_count) AS TOTAL_VIEW,
                         SUM(VIDEO.like_count) AS TOTAL_LIKE,
                         SUM(VIDEO.comment_count) AS TOTAL_COMMENT
-                        FROM USER INNER JOIN VIDEO ON USER.id = VIDEO.USER_ID
-                        WHERE USER.ID = ? and WHERE USER.ROLE_ID <> 1
+                        FROM user INNER JOIN VIDEO ON user.id = VIDEO.user
+                        WHERE user.ID = ? and WHERE user.ROLE_ID <> 1
                         `
 
             connection.query(sql, [id], function(err, user) {
@@ -65,7 +65,7 @@ class UserModel {
 
     blockUserById(id) {
         return new Promise(function(resolve, reject) {
-            let sql = 'UPDATE USER SET HIDE = 1 WHERE ID = ?'
+            let sql = 'UPDATE user SET HIDE = 1 WHERE ID = ?'
 
             connection.query(sql, [id], function(err, rows) {
                 if (err) {
@@ -79,7 +79,7 @@ class UserModel {
 
     unblockUserById(id) {
         return new Promise(function(resolve, reject) {
-            let sql = 'UPDATE USER SET HIDE = 0 WHERE ID = ?'
+            let sql = 'UPDATE user SET HIDE = 0 WHERE ID = ?'
 
             connection.query(sql, [id], function(err, rows) {
                 if (err) {
