@@ -10,7 +10,7 @@ class TagModel {
                     reject(err)
                 }
 
-                if(!tags){
+                if(tags){
                     let _tags = tags.map(tag => {
                         var bytes = tag.hide
                         let hide = bytes[0] === 0
