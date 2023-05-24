@@ -10,14 +10,18 @@ class TagModel {
                     reject(err)
                 }
 
-                let _tags = tags.map(tag => {
-                    var bytes = tag.hide
-                    let hide = bytes[0] === 0
+                if(!tags){
+                    let _tags = tags.map(tag => {
+                        var bytes = tag.hide
+                        let hide = bytes[0] === 0
+    
+                        return {...tag, _hide: hide }
+                    })
+    
+                    resolve(_tags)
+                }
 
-                    return {...tag, _hide: hide }
-                })
-
-                resolve(_tags)
+                resolve()                
             })
         })
     }
