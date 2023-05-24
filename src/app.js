@@ -150,5 +150,5 @@ app.use(function(err, req, res, next) {
 });
 
 app.listen(3000, function(){
-    console.log(`Express started on http://localhost:${3000} press Ctrl-C to terminate.`)
+    console.log(`Express started on http://localhost:${3000} press Ctrl-C to terminate.`);
 })
