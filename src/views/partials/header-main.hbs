@@ -1,70 +1,63 @@
-<nav class="navbar navbar-expand navbar-light bg-white static-top custum-nav sticky-top row">
-    <div class="col-sm-12 col-md-3">
-        &nbsp;&nbsp;
-        <button class="btn btn-link text-secondary" id="sidebarToggle">
-            <i class="fa-solid fa-bars"></i>
-        </button>
-        &nbsp;&nbsp;
+<nav class="navbar navbar-expand navbar-light bg-white static-top custum-nav sticky-top">
+    &nbsp;&nbsp;
+    <button class="btn btn-link text-secondary" id="sidebarToggle">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+    &nbsp;&nbsp;
 
-        <a class="navbar-brand" href="/"><img alt="logo" src="/images/logoyt.png"></a>
-    </div>
+    <a class="navbar-brand" href="/"><img alt="logo" src="/images/logoyt.png"></a>
 
-    <div class="col-sm-12 col-md-6">
-        {{!-- Navbar Search --}}
-        <form class="custum-navbar-search form-inline mx-auto" action="/search" method="get">
-            <div class="input-group">
-                <input id="searchQuery" name="search_query" type="search" class="form-control"
-                    placeholder="Tìm kiếm...">
-                <div class="input-group-append">
-                    <button class="btn btn-light" type="submit">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
-                </div>
+    {{!-- Navbar Search --}}
+    <form class="custum-navbar-search form-inline mx-auto" action="/search" method="get">
+        <div class="input-group">
+            <input id="searchQuery" name="search_query" type="search" class="form-control" placeholder="Tìm kiếm...">
+            <div class="input-group-append">
+                <button class="btn btn-light" type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
 
-    <div class="col-sm-12 col-md-3">
-        {{!-- Navbar --}}
-        <ul class="navbar-nav">
-            {{#if userlogin}}
-            <li class="nav-item mr-2">
-                <a class="nav-link" href="/account/uploadvideo">
-                    <i class="fa-solid fa-upload"></i>
-                    Upload Video
-                </a>
-            </li>
+    {{!-- Navbar --}}
+    <ul class="navbar-nav">
+        {{#if userlogin}}
+        <li class="nav-item mr-2">
+            <a class="nav-link" href="/account/uploadvideo">
+                <i class="fa-solid fa-upload"></i>
+                Upload Video
+            </a>
+        </li>
 
-            {{!-- <li class="nav-item nav-link mr-2">
-                <i class="fa-solid fa-bell"></i>
-            </li> --}}
+        {{!-- <li class="nav-item nav-link mr-2">
+            <i class="fa-solid fa-bell"></i>
+        </li> --}}
 
-            <li class="nav-item dropdown mr-2">
-                <a class="nav-link dropdown-toggle user-dropdown-link" href="" id="userDropdown" role="button"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="/uploads/avatars/{{userlogin.avatar_path}}" alt="avatar">
-                    {{userlogin.name}}
-                </a>
+        <li class="nav-item dropdown mr-2">
+            <a class="nav-link dropdown-toggle user-dropdown-link" href="" id="userDropdown" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="/uploads/avatars/{{userlogin.avatar_path}}" alt="avatar">
+                {{userlogin.name}}
+            </a>
 
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                    <a class="dropdown-item" href="/account"><i class="fa-solid fa-user"></i> &nbsp; My Channel</a>
-                    <a class="dropdown-item" href="/account/settings"><i class="fa-solid fa-gear"></i> &nbsp;
-                        Settings</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal"><i
-                            class="fas fa-fw fa-sign-out-alt"></i> &nbsp; Logout</a>
-                </div>
-            </li>
-            {{else}}
-            <li class="nav-item mr-2">
-                <a href="/login" class="nav-link">
-                    <i class="fa-solid fa-right-to-bracket"></i>
-                    Login
-                </a>
-            </li>
-            {{/if}}
-        </ul>
-    </div>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="/account"><i class="fa-solid fa-user"></i> &nbsp; My Channel</a>
+                <a class="dropdown-item" href="/account/settings"><i class="fa-solid fa-gear"></i> &nbsp;
+                    Settings</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal"><i
+                        class="fas fa-fw fa-sign-out-alt"></i> &nbsp; Logout</a>
+            </div>
+        </li>
+        {{else}}
+        <li class="nav-item mr-2">
+            <a href="/login" class="nav-link">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                Login
+            </a>
+        </li>
+        {{/if}}
+    </ul>
 </nav>
 
 <!-- Logout Modal-->
