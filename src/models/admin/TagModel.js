@@ -2,26 +2,22 @@ const connection = require('../../utils/database.js');
 
 class TagModel {
     getTags() {
-        return new Promise(function(resolve, reject) {
+        return new Promise(function (resolve, reject) {
             let sql = 'SELECT * FROM TAG'
 
-            connection.query(sql, function(err, tags) {
+            connection.query(sql, function (err, tags) {
                 if (err) {
                     reject(err)
                 }
 
-                if(tags){
-                    let _tags = tags.map(tag => {
-                        var bytes = tag.hide
-                        let hide = bytes[0] === 0
-    
-                        return {...tag, _hide: hide }
-                    })
-    
-                    resolve(_tags)
-                }
+                let _tags = tags.map(tag => {
+                    var bytes = tag.hide
+                    let hide = bytes[0] === 0
 
-                resolve()                
+                    return { ...tag, _hide: hide }
+                })
+
+                resolve(_tags)
             })
         })
     }
@@ -30,7 +26,7 @@ class TagModel {
         return new Promise((resolve, reject) => {
             let sql = "SELECT * FROM tag WHERE ID = ?"
 
-            connection.query(sql, [id], function(err, tag) {
+            connection.query(sql, [id], function (err, tag) {
                 if (err) {
                     reject(err)
                 }
@@ -53,7 +49,7 @@ class TagModel {
         return new Promise((resolve, reject) => {
             let sql = 'INSERT INTO TAG VALUES (?)';
 
-            connection.query(sql, [tag], function(err, result) {
+            connection.query(sql, [tag], function (err, result) {
                 if (err) {
                     reject(err)
                 }
@@ -61,8 +57,6 @@ class TagModel {
                 if (result === 0) {
                     resolve(['danger', 'Thêm chuyên mục thất bại'])
                 } else {
-                    // req.flash('status', 'success')
-                    // req.flash('message', 'Thêm chuyên mục thành công')
                     resolve(['success', 'Thêm chuyên mục thành công'])
                 }
 
@@ -75,7 +69,7 @@ class TagModel {
         return new Promise((resolve, reject) => {
             let sql = 'UPDATE tag SET ? WHERE id = ?'
 
-            connection.query(sql, tag, function(err, rows) {
+            connection.query(sql, tag, function (err, rows) {
                 if (err) {
                     reject(err)
                 }
@@ -97,7 +91,7 @@ class TagModel {
         return new Promise((resolve, reject) => {
             let sql = "DELETE FROM TAG WHERE ID = ?"
 
-            connection.query(sql, [id], function(err, result) {
+            connection.query(sql, [id], function (err, result) {
                 if (err) {
                     reject(err)
                 }
