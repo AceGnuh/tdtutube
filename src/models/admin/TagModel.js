@@ -3,21 +3,28 @@ const connection = require('../../utils/database.js');
 class TagModel {
     getTags() {
         return new Promise(function (resolve, reject) {
-            let sql = 'SELECT * FROM TAG'
+            let sql = 'SELECT * FROM tag'
 
             connection.query(sql, function (err, tags) {
                 if (err) {
                     reject(err)
+                
                 }
 
-                let _tags = tags.map(tag => {
-                    var bytes = tag.hide
-                    let hide = bytes[0] === 0
+                console.log(tags)
 
-                    return { ...tag, _hide: hide }
-                })
+                if(tags){
+                    let _tags = tags.map(tag => {
+                        var bytes = tag.hide
+                        let hide = bytes[0] === 0
+    
+                        return { ...tag, _hide: hide }
+                    })
+    
+                    resolve(_tags);
+                }
 
-                resolve(_tags)
+                
             })
         })
     }
