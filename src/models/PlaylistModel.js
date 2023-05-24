@@ -29,7 +29,7 @@ class PlaylistModel {
                             LEFT JOIN video ON playlistcontent.video_id = video.id
                             WHERE playlist.user_id = ? AND playlist.hide = 0 
                                   AND (playlist.privacy = ? OR ? IS NULL)
-                            GROUP BY playlist.id
+                            GROUP BY playlist.id, playlistcontent.video_id
                             ORDER BY playlist.order`;
 
             connection.query(sql, [userId, getAll, getAll], (error, results) => {
