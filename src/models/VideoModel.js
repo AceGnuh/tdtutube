@@ -217,7 +217,7 @@ class VideoModel {
 
     addVideo(userId, tagId, title, description, lengthVideo, thumbnail, path, meta, privacy) {
         return new Promise((resolve, reject) => {
-            let sql = `INSERT INTO VIDEO (user_id, tag_id, title, description, length, thumbnail, path, meta, privacy) VALUES (?)`
+            let sql = `INSERT INTO video (user_id, tag_id, title, description, length, thumbnail, path, meta, privacy) VALUES (?)`
 
             connection.query(sql, [
                 [parseInt(userId), parseInt(tagId), title, description, lengthVideo, thumbnail, path, meta.toString(), parseInt(privacy)]
