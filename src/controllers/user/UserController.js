@@ -271,8 +271,8 @@ class UserController {
         let videoUpload = req.files['video']
         let thumbnailUpload = req.files['thumbnail']
         let user = req.session.userlogin
-        let videoDir = path.join(__dirname, '..', '..', 'public', 'Uploads', 'videos')
-        let thumbnailDir = path.join(__dirname, '..', '..', 'public', 'Uploads', 'thumbnails')
+        let videoDir = path.join(__dirname, '..', '..', 'public', 'uploads', 'videos')
+        let thumbnailDir = path.join(__dirname, '..', '..', 'public', 'uploads', 'thumbnails')
 
         let oldPathVideos = path.join(__dirname, '..', '..', videoUpload[0].path)
         let oldPathThumbnail = path.join(__dirname, '..', '..', thumbnailUpload[0].path)

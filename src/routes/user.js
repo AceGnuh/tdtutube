@@ -9,12 +9,12 @@ const storage = multer.diskStorage({
         //console.log("Data file upload: " + JSON.stringify(file));
 
         if (file.filename === 'thumbnail') {
-            cb(null, 'public/Uploads/thumbnails/')
+            cb(null, 'public/uploads/thumbnails/')
         } else {
             if (file.filename === 'video') {
-                cb(null, 'public/Uploads/videos/')
+                cb(null, 'public/uploads/videos/')
             } else {
-                cb(null, 'public/Uploads/')
+                cb(null, 'public/uploads/')
             }
         }
 
@@ -27,7 +27,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage })
 
-// const upload = multer({ dest: 'public/Uploads/' })
+// const upload = multer({ dest: 'public/uploads/' })
 const thumbnailAndVideoUpload = upload.fields([{ name: 'thumbnail' }, { name: 'video' }])
 
 const storage_thumbnails = multer.diskStorage({
@@ -42,7 +42,7 @@ const upload_thumbnails = multer({ storage_thumbnails });
 
 const storage_avatars = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, 'public/Uploads/avatars');
+        cb(null, 'public/uploads/avatars');
     },
     filename: function(req, file, cb) {
         cb(null, file.originalname);
