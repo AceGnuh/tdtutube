@@ -24,6 +24,11 @@ class IndexController {
 
     getNextIndex(req, res, next) {
         var id = req.params.id;
+
+        if(!parseInt(id)){
+            return res.status(404).render('404')
+        }
+
         videoModel.loadVideo(id).then((video) => {
             res.render('index', {
                 title: 'TDTUTube',
