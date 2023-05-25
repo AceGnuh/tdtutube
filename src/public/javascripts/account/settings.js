@@ -1,5 +1,10 @@
 const avatarImage = document.getElementById('avatar-img');
 const imageInput = document.getElementById('image-input');
+const userName = document.getElementsByClassName("user-name")[0]
+
+userName.addEventListener('click', () => {
+    imageInput.click();
+});
 
 avatarImage.addEventListener('click', () => {
     imageInput.click();
