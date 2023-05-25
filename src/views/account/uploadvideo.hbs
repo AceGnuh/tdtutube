@@ -218,13 +218,22 @@
 
         let isVideo = false
 
+        let nameExtendVideo = ''
+
+        if(splitName.length == 3){
+            nameExtendVideo = splitName[2]
+        } 
+        else{
+            nameExtendVideo = splitName[1]
+        }
+
         //check ext file name of video
         let extVideo = ['mp4', 'mov', 'mkv', 'MOV']
 
         console.log("Type video upload: " + splitName[1])
 
         extVideo.forEach( _ => {
-            if(_ === splitName[1]) {
+            if(_ === nameExtendVideo.toLowerCase()) {
                 isVideo = true
             }
         })
