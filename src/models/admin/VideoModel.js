@@ -85,7 +85,7 @@ class VideoModel {
         return new Promise(function(resolve, reject) {
             let sql = ` SELECT video.*, 
                         user.NAME AS USERNAME, 
-                        TAG.NAME AS TAGNAME 
+                        tag.NAME AS TAGNAME 
                         FROM video, user, tag 
                         WHERE video.id = ? AND user.ID = video.USER_ID AND video.TAG_ID = tag.ID`
 
@@ -94,9 +94,9 @@ class VideoModel {
                     reject(err)
                 }
 
-                video = video[0]
+                //video = video[0]
 
-                resolve(video)
+                resolve(video[0])
             })
         })
     }

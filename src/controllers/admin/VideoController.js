@@ -65,6 +65,8 @@ class VideoController {
     detail(req, res) {
         let _idVideo = req.params.id
 
+        console.log("Id video unapprove: " + _idVideo);
+
         videoModel.getUnapprovedVideoById(_idVideo)
             .then(video => {
                 if (!video) {
@@ -72,6 +74,8 @@ class VideoController {
                     req.flash('message', 'Video không tìm thấy')
                     return res.redirect('/admin/videos/unapproved')
                 }
+
+                console.log("Data video is query: " + JSON.stringify(video));
 
                 res.render('admin/videos/detail', {
                     layout: 'admin.hbs',
