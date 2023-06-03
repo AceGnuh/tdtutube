@@ -14,12 +14,6 @@ Có thể thay đổi lại cài đặt kết nối database bằng cách:
 - Thay đổi host, user, password tương ứng.
 - Lưu và chạy lại.
 
-Thành viên trong nhóm:
-Trần Lai Phước – 52000705 (LiaCyrus, Trần Lai Phước)
-Trần Tấn Hưng – 52000052 (Gnud23)
-Huỳnh Đình Long – 52000777 (HuynhDinhLong)
-Đặng Phùng Thiên Ân – 52000622 (bum1235aa, DangPhungThienAn)
-
 Link Figma: https://www.figma.com/file/efJKAaP4KSzashOq2BH04U/Untitled?node-id=0%3A1&t=86ZXtjISZPkKe3HV-1
 
 Tài khoản admin:
